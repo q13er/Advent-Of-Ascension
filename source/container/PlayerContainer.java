@@ -65,7 +65,7 @@ public class PlayerContainer implements IExtendedEntityProperties {
 	}
 
 	public void saveNBTSkillData(Skills skill, NBTTagCompound baseTag) {
-		final NBTTagCompound tag = baseTag.getCompoundTag("PlayerPersisted");
+		final NBTTagCompound tag = baseTag.getCompoundTag("AoAPlayerPersisted");
 		final NBTTagCompound skillTag = new NBTTagCompound();
 		if (skillsLvl.get(skill) == 0)
 			return;
@@ -77,12 +77,12 @@ public class PlayerContainer implements IExtendedEntityProperties {
 			skillTag.setInteger("Opt", expeditionBoost);
 
 		tag.setTag(skill.name(), skillTag);
-		baseTag.setTag("PlayerPersisted", tag);
-		player.getEntityData().setTag("PlayerPersisted", tag);
+		baseTag.setTag("AoAPlayerPersisted", tag);
+		player.getEntityData().setTag("AoAPlayerPersisted", tag);
 	}
 
 	public void saveNBTTributeData(NBTTagCompound baseTag) {
-		final NBTTagCompound tag = baseTag.getCompoundTag("PlayerPersisted");
+		final NBTTagCompound tag = baseTag.getCompoundTag("AoAPlayerPersisted");
 		final NBTTagCompound tributeTag = new NBTTagCompound();
 
 		tributeTag.setInteger(Luxon.name(), getTribute(Luxon));
@@ -90,12 +90,12 @@ public class PlayerContainer implements IExtendedEntityProperties {
 		tributeTag.setInteger(Selyan.name(), getTribute(Selyan));
 		tributeTag.setInteger(Erebon.name(), getTribute(Erebon));
 		tag.setTag("Tribute", tributeTag);
-		baseTag.setTag("PlayerPersisted", tag);
-		player.getEntityData().setTag("PlayerPersisted", tag);
+		baseTag.setTag("AoAPlayerPersisted", tag);
+		player.getEntityData().setTag("AoAPlayerPersisted", tag);
 	}
 
 	public void saveNBTPortalReturnData(NBTTagCompound baseTag) {
-		final NBTTagCompound tag = baseTag.getCompoundTag("PlayerPersisted");
+		final NBTTagCompound tag = baseTag.getCompoundTag("AoAPlayerPersisted");
 
 		final NBTTagCompound portalTag = new NBTTagCompound();
 
@@ -104,12 +104,12 @@ public class PlayerContainer implements IExtendedEntityProperties {
 		portalTag.setDouble("posZ", portalReturnLocation.z);
 
 		tag.setTag("PortalReturnLoc", portalTag);
-		baseTag.setTag("PlayerPersisted", tag);
-		player.getEntityData().setTag("PlayerPersisted", tag);
+		baseTag.setTag("AoAPlayerPersisted", tag);
+		player.getEntityData().setTag("AoAPlayerPersisted", tag);
 	}
 
 	public void loadNBTData(final NBTTagCompound n) {
-		final NBTTagCompound tag = n.getCompoundTag("PlayerPersisted");
+		final NBTTagCompound tag = n.getCompoundTag("AoAPlayerPersisted");
 
 		if (n.hasKey("animaSkill")) {
 			doLegacyImport();
@@ -152,7 +152,7 @@ public class PlayerContainer implements IExtendedEntityProperties {
 			}
 		}
 
-		player.getEntityData().setTag("PlayerPersisted", tag);
+		player.getEntityData().setTag("AoAPlayerPersisted", tag);
 	}
 
 	public void tickPlayer() {
@@ -392,7 +392,7 @@ public class PlayerContainer implements IExtendedEntityProperties {
 
 	private void doLegacyImport() {
 		final NBTTagCompound entityData = player.getEntityData();
-		final NBTTagCompound tag = entityData.getCompoundTag("PlayerPersisted");
+		final NBTTagCompound tag = entityData.getCompoundTag("AoAPlayerPersisted");
 
 		if (tag.hasKey("AnLevel")) {
 			skillsXp.put(Anima, tag.getFloat("AnExp"));
