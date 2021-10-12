@@ -29,19 +29,19 @@ public class RecoilTimer implements IExtendedEntityProperties {
 	public void saveNBTData(final NBTTagCompound n) {
 		final NBTTagCompound entityData = player.getEntityData();
 		final EntityPlayer player = this.player;
-		final NBTTagCompound tag = entityData.getCompoundTag("PlayerPersisted");
+		final NBTTagCompound tag = entityData.getCompoundTag("AoAPlayerPersisted");
 		tag.setInteger("TickRec", ticks);
 		tag.setFloat("Rec", recoil);
 		n.setTag("Recoil", tag);
 		final NBTTagCompound entityData2 = this.player.getEntityData();
 		final EntityPlayer player2 = this.player;
-		entityData2.setTag("PlayerPersisted", tag);
+		entityData2.setTag("AoAPlayerPersisted", tag);
 	}
 
 	public void loadNBTData(final NBTTagCompound n) {
 		final NBTTagCompound entityData = player.getEntityData();
 		final EntityPlayer player = this.player;
-		final NBTTagCompound tag = entityData.getCompoundTag("PlayerPersisted");
+		final NBTTagCompound tag = entityData.getCompoundTag("AoAPlayerPersisted");
 		if (!tag.hasKey("TickRec")) {
 			return;
 		}
@@ -49,7 +49,7 @@ public class RecoilTimer implements IExtendedEntityProperties {
 		recoil = tag.getFloat("Rec");
 		final NBTTagCompound entityData2 = this.player.getEntityData();
 		final EntityPlayer player2 = this.player;
-		entityData2.setTag("PlayerPersisted", tag);
+		entityData2.setTag("AoAPlayerPersisted", tag);
 	}
 
 	public void setRecoil(final float i) {
